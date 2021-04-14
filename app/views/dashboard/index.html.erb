@@ -1,0 +1,8 @@
+<p id="notice"><%= notice %></p>
+<p id="alert"><%= alert %></p>
+<h2> Assign Available slot to teachers </h2>
+
+<%= form_tag :dashboard_assign, method: :post %>
+ <%= select_tag 'slot_id', options_for_select(Slot.all.collect{ |u| ["From: #{u.start_date}" " To:#{u.end_date}", u.id] }) %>
+ <%= select_tag 'teacher_id', options_for_select(Teacher.all.collect{ |u| [u.name, u.id] }) %>
+ <%= submit_tag("Assign") %>
